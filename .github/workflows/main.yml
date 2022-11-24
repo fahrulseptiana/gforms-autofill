@@ -24,7 +24,7 @@ jobs:
           start: npx cypress run
           env: FORM=test,N=1
           
-      - name: Upload Test Video
+      - name: Upload Test Video (If failed happens)
         if: failure()
         uses: actions/upload-artifact@v3.1.0
         with:
