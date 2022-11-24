@@ -13,4 +13,5 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v4
         with:
-          start: npx cypress run -e FORM=test,N=1
+          start: npx cypress run
+          env: FORM=test,N=1
