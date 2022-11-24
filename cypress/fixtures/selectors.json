@@ -1,5 +1,6 @@
 {
     "input": "input",
     "paragraph": "textarea",
-    "buttons": "div[role=\"button\"]"
+    "buttons": "div[role=\"button\"]",
+    "time": "input[role=\"combobox\"][max=\"23\"]"
 }

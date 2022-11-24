@@ -30,8 +30,13 @@ export default class GForm {
     fillQuestion = (question) => {
         switch (question.type) {
             case "shortAnswer":
-            case "date":
                 this.type("input", question.answer.toString());
+                break;
+            case "date":
+                this.fillDate(question.answer.toString());
+                break;
+            case "time":
+                this.fillTime(question.answer.toString());
                 break;
             case "paragraph":
                 this.type("paragraph", question.answer.toString());
@@ -71,6 +76,33 @@ export default class GForm {
         selected.forEach(value => {
             this.selectRadio(value)
         })
+    }
+
+    fillTime = (input) => {
+        if(input === "now"){
+            input = String(new Date().getHours()).padStart(2, 0) + ":" + String(new Date().getMinutes()).padStart(2, 0)
+        }
+        const time = input.split(":");
+        cy.get(this.selectors.time)
+        .parent()
+        .parent()
+        .parent()
+        .parent()
+        .parent()
+        .parent()
+        .get('input')
+        .each((child, i) => {
+            cy.get(child).type(time[i])
+        });
+    };
+
+    fillDate = (value) => {
+        if(value === "now"){
+            const today = new Date().getFullYear() + "-" + (parseInt(new Date().getMonth())+1) + "-" + new Date().getDate()
+            this.type("input", today)
+        }else{
+            this.type("input", question.answer.toString())
+        }
     }
 
     nextSection = () => {

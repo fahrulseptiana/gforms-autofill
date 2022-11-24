@@ -30,7 +30,17 @@
         {
             "title": "Short 1",
             "type": "shortAnswer",
-            "answer": "Lorem ipsumoooo.",
+            "answer": "Lorem ipsumoooo."
+        },
+        {
+            "title": "Date Input",
+            "type": "date",
+            "answer": "now"
+        },
+        {
+            "title": "Time Input",
+            "type": "time",
+            "answer": "now",
             "formEnd": true
         }
     ]
