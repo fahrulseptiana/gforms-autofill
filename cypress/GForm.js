@@ -80,7 +80,7 @@ export default class GForm {
 
     fillTime = (input) => {
         if(input === "now"){
-            input = String(new Date().getHours()).padStart(2, 0) + ":" + String(new Date().getMinutes()).padStart(2, 0)
+            input = Cypress.env("TIME_NOW") || (String(new Date().getHours()).padStart(2, 0) + ":" + String(new Date().getMinutes()).padStart(2, 0))
         }
         const time = input.split(":");
         cy.get(this.selectors.time)
@@ -98,7 +98,7 @@ export default class GForm {
 
     fillDate = (value) => {
         if(value === "now"){
-            const today = new Date().getFullYear() + "-" + (parseInt(new Date().getMonth())+1) + "-" + new Date().getDate()
+            const today = Cypress.env("DATE_NOW") || (new Date().getFullYear() + "-" + (parseInt(new Date().getMonth())+1) + "-" + new Date().getDate())
             this.type("input", today)
         }else{
             this.type("input", question.answer.toString())
