@@ -35,6 +35,11 @@
         {
             "title": "Date Input",
             "type": "date",
+            "answer": "now"
+        },
+        {
+            "title": "Time Input",
+            "type": "time",
             "answer": "now",
             "formEnd": true
         }
