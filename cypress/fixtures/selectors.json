@@ -1,0 +1,5 @@
+{
+    "input": "input",
+    "paragraph": "textarea",
+    "buttons": "div[role=\"button\"]"
+}
