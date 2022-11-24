@@ -22,7 +22,7 @@ jobs:
         uses: cypress-io/github-action@v4
         with:
           start: npx cypress run
-          env: FORM=test,N=14${{ github.event.inputs.date != '' && ',DATE_NOW=' + github.event.inputs.date }}
+          env: FORM=test,N=14${{ (github.event.inputs.date != '') && ',DATE_NOW=' github.event.inputs.date }}
           
       - name: Upload Test Video (If failed happens)
         if: failure()
