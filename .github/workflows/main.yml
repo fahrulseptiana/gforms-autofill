@@ -3,7 +3,9 @@ on:
   workflow_dispatch:
     inputs:
       date:
-        description: "Date to fill"
+        description: "Date to fill (YYYY-MM-DD)"
+      time:
+        description: "Time to fill (24h format with colon delimeters example '12:00')"
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
@@ -22,7 +24,7 @@ jobs:
         uses: cypress-io/github-action@v4
         with:
           start: npx cypress run
-          env: FORM=test,N=1${{ github.event.inputs.date != '' && format(',DATE_NOW={0}', github.event.inputs.date) }}
+          env: FORM=test,N=1${{ github.event.inputs.date != '' && format(',DATE_NOW={0}', github.event.inputs.date) }}${{ github.event.inputs.time != '' && format(',TIME_NOW={0}', github.event.inputs.time) }}
           
       - name: Upload Test Video (If failed happens)
         if: failure()
