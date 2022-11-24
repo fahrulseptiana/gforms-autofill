@@ -37,6 +37,8 @@ export default class GForm {
                 this.type("paragraph", question.answer.toString());
                 break;
             case "checkbox":
+                this.selectCheckbox(question.answer)
+                break;
             case "multipleChoice":
                 this.selectRadio(question.answer.toString())
                 break;
@@ -63,6 +65,12 @@ export default class GForm {
         cy.get('div')
         .parent()
         .contains(value).parent().click()
+    }
+
+    selectCheckbox = (selected) => {
+        selected.forEach(value => {
+            this.selectRadio(value)
+        })
     }
 
     nextSection = () => {

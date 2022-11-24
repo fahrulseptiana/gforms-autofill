@@ -14,7 +14,7 @@
         {
             "title": "Dropdown Test",
             "type": "dropdown",
-            "answer": "Option 3"
+            "answer": "Option 2"
         },
         {
             "title": "Radio Test",
@@ -24,7 +24,7 @@
         {
             "title": "Checkbox Test",
             "type": "checkbox",
-            "answer": "Option 3",
+            "answer": ["Option 1", "Option 3"],
             "sectionEnd": true
         },
         {
