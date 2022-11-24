@@ -28,5 +28,7 @@ jobs:
         if: failure()
         uses: actions/upload-artifact@v3.1.0
         with:
-          name: Preview-${{ steps.current-time.outputs.formattedTime }}.mp4
-          path: ${{ github.workspace }}/cypress/videos/gform.cy.js.mp4
+          name: Failed Reports-${{ steps.current-time.outputs.formattedTime }}
+          path: |
+            ${{ github.workspace }}/cypress/videos/gform.cy.js.mp4
+            ${{ github.workspace }}/cypress/screenshots/gform.cy.js/Google Forms Automation -- Iteration 1 (failed).png
