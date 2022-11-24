@@ -1,0 +1,16 @@
+name: Fill The Google Forms
+on:
+  workflow_dispatch:
+    inputs:
+      date:
+        description: "Date to fill"
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Cypress run
+        uses: cypress-io/github-action@v4
+        with:
+          start: npx cypress run -e FORM=test,N=1
