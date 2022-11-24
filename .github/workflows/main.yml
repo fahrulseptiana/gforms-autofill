@@ -8,10 +8,24 @@ jobs:
   cypress-run:
     runs-on: ubuntu-latest
     steps:
+      - name: Get current time
+        uses: josStorer/get-current-time@v2.0.2
+        id: current-time
+        with:
+          format: YYYYMMDD-HHmmss
+          utcOffset: "+07:00"
+        
       - name: Checkout
         uses: actions/checkout@v2
+        
       - name: Cypress run
         uses: cypress-io/github-action@v4
         with:
           start: npx cypress run
           env: FORM=test,N=1
+          
+      - name: Upload Test Video
+        uses: actions/upload-artifact@v3.1.0
+        with:
+          name: Preview-${{ steps.current-time.outputs.formattedTime }}.mp4
+          path: ${{ github.workspace }}/gforms-autofill/cypress/videos/gform.cy.js.mp4
